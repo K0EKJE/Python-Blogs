@@ -18,7 +18,14 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this blog"
+    "text": "Hi there, my name is Haoran Jia, and I am a senior student at UCLA. My interest lies in data science and machine learning. This website will host some of projects I’ve done with Python."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\nUniversity of California, Los Angeles | Los Angeles, CA\nMajor in Applied Mathematics, Specialization in Computing | Sept 2020 - June 2024"
   },
   {
     "objectID": "posts/Database Queries and Interactive Visualizations with Python/index.html",
