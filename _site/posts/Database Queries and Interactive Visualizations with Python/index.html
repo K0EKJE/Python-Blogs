@@ -421,12 +421,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create database</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"temps.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We observe that <code>temps</code> is extremely large, so we may want to add it to the database by chunks.</p>
+<p>We observe that <code>temps</code> is extremely large, so we may want to add it to the database by chunks. We can write a function to do this.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:39971,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1698018178091,&quot;user&quot;:{&quot;displayName&quot;:&quot;HAORAN JIA&quot;,&quot;userId&quot;:&quot;00526075531643448393&quot;},&quot;user_tz&quot;:420}" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read segmented table into database</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_iter <span class="op">=</span> pd.read_csv(<span class="st">'temps_stacked.csv'</span>, chunksize <span class="op">=</span> <span class="dv">100000</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> df <span class="kw">in</span> df_iter:</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    df.to_sql(<span class="st">"temperatures"</span>, conn, if_exists <span class="op">=</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_csv_to_database(csv_file_path, database_connection):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read segmented table into database</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    df_iter <span class="op">=</span> pd.read_csv(csv_file_path, chunksize<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> df <span class="kw">in</span> df_iter:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        df.to_sql(<span class="st">"temperatures"</span>, database_connection, if_exists<span class="op">=</span><span class="st">"append"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>csv_file_path <span class="op">=</span> <span class="st">'temps_stacked.csv'</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>read_csv_to_database(csv_file_path, conn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Add other two datasets to the database.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:509,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1698018178572,&quot;user&quot;:{&quot;displayName&quot;:&quot;HAORAN JIA&quot;,&quot;userId&quot;:&quot;00526075531643448393&quot;},&quot;user_tz&quot;:420}" data-outputid="0e7e0997-4d42-4fad-bc80-0fec53e62ad8" data-execution_count="9">
