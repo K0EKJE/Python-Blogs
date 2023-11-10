@@ -12,7 +12,7 @@ about:
       href: https://github.com/K0EKJE
 
 ---
-Hi there, my name is Haoran Jia, and I am a senior student at UCLA. My interest lies in data science and machine learning. This website will host some of projects I've done with Python.
+Hi there, my name is Haoran Jia, and I am a senior student at UCLA. My interest lies in data science and machine learning. This website will host some of simple tutorials playing with Python.
 
 ## Education
 
