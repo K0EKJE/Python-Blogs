@@ -1,6 +1,7 @@
 # Python-Blogs
 This repo hosts the files for my Quarto blogs
 
+```
 post/
 │
 ├── Start With Quarto
@@ -10,3 +11,4 @@ post/
 ├── Dog Cat classification
 │
 └── TMDB scraper
+```
