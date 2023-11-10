@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Dog Cat classification/Dog_cat_classfication.html",
+      "/posts/TMDB_scraper/index.html",
       "/posts/Database Queries and Interactive Visualizations with Python/index.html",
       "/posts/Start With Quarto/index.html"
     ]
