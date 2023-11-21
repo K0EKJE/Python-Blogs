@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Fake News Classifcation/Fake_News_Classification.html",
       "/posts/Dog Cat classification/Dog_cat_classfication.html",
       "/posts/TMDB_scraper/index.html",
       "/posts/Database Queries and Interactive Visualizations with Python/index.html",
